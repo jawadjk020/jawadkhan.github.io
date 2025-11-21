@@ -1201,14 +1201,24 @@
                 order: 3;
                 width: 100%;
                 justify-content: center;
-                gap: var(--space-3);
+                gap: var(--space-2);
                 padding-top: var(--space-2);
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            
+            .nav-menu::-webkit-scrollbar {
+                display: none;
             }
             
             .nav-link {
-                font-size: var(--text-sm);
+                font-size: 0.7rem;
                 padding: var(--space-1) var(--space-2);
+                white-space: nowrap;
+                flex-shrink: 0;
             }
             
             .nav-actions {
@@ -1222,6 +1232,16 @@
 
             .mobile-toggle {
                 display: none;
+            }
+            
+            .hero-section {
+                padding: 140px 0 var(--space-20) 0;
+                min-height: auto;
+            }
+            
+            .hero-content {
+                position: relative;
+                z-index: 1;
             }
 
             .hero-cta {
@@ -1552,15 +1572,6 @@
                             <div class="badge"><span class="number">3rd</span> Position FYP</div>
                             <div class="badge"><span class="number">5+</span> Certifications</div>
                         </div>
-                        
-                        <button class="btn btn-primary">
-                            Download CV
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7 10 12 15 17 10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2035,7 +2046,7 @@
                                 </div>
                                 <div class="method-content">
                                     <h4>Location</h4>
-                                    <p>Khar, Batkhela, Malakand, KPK, Pakistan</p>
+                                    <p>Malakand, Pakistan</p>
                                 </div>
                             </div>
                         </div>
@@ -2071,7 +2082,11 @@
                     </div>
                     
                     <div class="contact-form-wrapper">
-                        <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/jawadjk080@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://jawadjk020.github.io/jawadkhan.github.io/">
+                            
                             <div class="form-group">
                                 <label for="name">Your Name</label>
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
@@ -2163,8 +2178,8 @@
                     <h4>Get In Touch</h4>
                     <ul class="footer-links">
                         <li><a href="mailto:jawadjk080@gmail.com">jawadjk080@gmail.com</a></li>
-                        <li><a href="tel:+923458025358">0345-8025358</a></li>
-                        <li>Khar, Batkhela, Malakand, KPK, Pakistan</li>
+                        <li><a href="tel:+1234567890">1234567890</a></li>
+                        <li>Malakand, Pakistan</li>
                     </ul>
                 </div>
             </div>
@@ -2188,8 +2203,8 @@
             title: "Computer Engineer (Gold Medalist) | Web & Mobile Developer",
             description: "Building intelligent web applications that solve real-world problems",
             email: "jawadjk080@gmail.com",
-            phone: "0345-8025358",
-            location: "Khar, Batkhela, Malakand, KPK, Pakistan",
+            phone: "1234567890",
+            location: "Malakand, Pakistan",
             
             // Social Links
             social: {
