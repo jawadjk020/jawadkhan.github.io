@@ -2082,11 +2082,7 @@
                     </div>
                     
                     <div class="contact-form-wrapper">
-                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/jawadjk080@gmail.com" method="POST">
-                            <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://jawadjk020.github.io/jawadkhan.github.io/">
-                            
+                        <form class="contact-form" id="contactForm">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
@@ -2338,23 +2334,31 @@
         const formStatus = document.getElementById('formStatus');
 
         if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
+            contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Simulate form submission
-                formStatus.className = 'form-status';
-                formStatus.textContent = 'Sending message...';
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Create mailto link
+                const mailtoLink = `mailto:jawadjk080@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+                )}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Opening your email client... Please send the email to complete your message.';
                 formStatus.style.display = 'block';
                 
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                formStatus.className = 'form-status success';
-                formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                
-                contactForm.reset();
-                
+                // Reset form after a delay
                 setTimeout(() => {
+                    contactForm.reset();
                     formStatus.style.display = 'none';
                 }, 5000);
             });
