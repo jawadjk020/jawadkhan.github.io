@@ -355,23 +355,6 @@
 
         .mobile-toggle {
             display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: var(--space-2);
-        }
-
-        .hamburger-line {
-            width: 25px;
-            height: 2px;
-            background: var(--neutral-700);
-            transition: all var(--duration-normal) var(--ease-in-out);
-        }
-
-        [data-theme="dark"] .hamburger-line {
-            background: var(--neutral-300);
         }
 
         /* ========================================
@@ -519,50 +502,7 @@
             color: var(--primary-500);
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: var(--space-8);
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            animation: bounce-slow 2s ease-in-out infinite;
-        }
 
-        .mouse {
-            width: 25px;
-            height: 40px;
-            border: 2px solid var(--neutral-700);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            padding-top: 8px;
-            margin: 0 auto var(--space-2);
-        }
-
-        [data-theme="dark"] .mouse {
-            border-color: var(--neutral-400);
-        }
-
-        .wheel {
-            width: 4px;
-            height: 8px;
-            background: var(--neutral-700);
-            border-radius: 2px;
-            animation: scroll-down 1.5s ease-in-out infinite;
-        }
-
-        [data-theme="dark"] .wheel {
-            background: var(--neutral-400);
-        }
-
-        .scroll-indicator p {
-            font-size: var(--text-xs);
-            color: var(--neutral-600);
-        }
-
-        [data-theme="dark"] .scroll-indicator p {
-            color: var(--neutral-400);
-        }
 
         /* ========================================
            BUTTONS
@@ -1219,6 +1159,14 @@
                 padding: 0 var(--space-4);
             }
             
+            .nav-menu {
+                gap: var(--space-4);
+            }
+            
+            .nav-link {
+                font-size: var(--text-sm);
+            }
+            
             .contact-grid {
                 grid-template-columns: 1fr !important;
                 gap: var(--space-8);
@@ -1236,46 +1184,44 @@
         
         /* Mobile Styles */
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--neutral-900);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: var(--space-20) var(--space-6);
-                gap: var(--space-4);
-                transition: right var(--duration-normal) var(--ease-in-out);
-                box-shadow: var(--shadow-2xl);
-                z-index: 1001;
+            .navbar {
+                padding: var(--space-2) 0;
             }
             
-            [data-theme="dark"] .nav-menu {
-                background: var(--neutral-100);
+            .nav-container {
+                flex-wrap: wrap;
+                gap: var(--space-2);
             }
-
-            .nav-menu.active {
-                right: 0;
+            
+            .logo {
+                font-size: var(--text-lg);
+            }
+            
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: var(--space-3);
+                padding-top: var(--space-2);
+                flex-wrap: wrap;
+            }
+            
+            .nav-link {
+                font-size: var(--text-sm);
+                padding: var(--space-1) var(--space-2);
+            }
+            
+            .nav-actions {
+                gap: var(--space-2);
+            }
+            
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
             }
 
             .mobile-toggle {
-                display: flex;
-                z-index: 1002;
-            }
-
-            .mobile-toggle.active .hamburger-line:nth-child(1) {
-                transform: rotate(45deg) translateY(7px);
-            }
-
-            .mobile-toggle.active .hamburger-line:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-toggle.active .hamburger-line:nth-child(3) {
-                transform: rotate(-45deg) translateY(-7px);
+                display: none;
             }
 
             .hero-cta {
@@ -1416,26 +1362,14 @@
             
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="5"/>
-                        <line x1="12" y1="1" x2="12" y2="3"/>
-                        <line x1="12" y1="21" x2="12" y2="23"/>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                        <line x1="1" y1="12" x2="3" y2="12"/>
-                        <line x1="21" y1="12" x2="23" y2="12"/>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18h6"/>
+                        <path d="M10 22h4"/>
+                        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
                     </svg>
-                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
-                </button>
-                
-                <button class="mobile-toggle" id="mobileToggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
                 </button>
             </div>
         </div>
@@ -1481,12 +1415,6 @@
                 </div>
             </div>
             
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <p>Scroll to explore</p>
-            </div>
         </section>
 
         <!-- Skills Section -->
@@ -2311,24 +2239,6 @@
         });
 
         // =====================================
-        // MOBILE MENU
-        // =====================================
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                mobileToggle.classList.remove('active');
-            }
-        });
-
         // =====================================
         // NAVBAR SCROLL EFFECT
         // =====================================
@@ -2373,10 +2283,6 @@
                     link.classList.add('active');
                 }
             });
-            
-            // Close mobile menu
-            navMenu.classList.remove('active');
-            mobileToggle.classList.remove('active');
         }
 
         // Add click listeners to all navigation elements
